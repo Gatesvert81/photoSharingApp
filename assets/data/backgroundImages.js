@@ -42,10 +42,6 @@ const backgroundImages = [
     background: image8,
   },
   {
-    id: 8,
-    background: image9,
-  },
-  {
     id: 9,
     background: image1,
   },
@@ -79,6 +75,10 @@ const backgroundImages = [
   },
   {
     id: 17,
+    background: image9,
+  },
+  {
+    id: 18,
     background: image9,
   },
 ]

@@ -1,10 +1,16 @@
+import 'react-native-gesture-handler'
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import { LogBox } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import Feather from '@expo/vector-icons/Feather'
 import { useFonts, Nunito_400Regular as NunitoRegular, Nunito_700Bold as NunitoBold } from '@expo-google-fonts/nunito';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import Navigator from './src/navigatoin';
+import { ThemeProvider } from 'styled-components/native';
+import theme from './assets/themes/index';
+
+LogBox.ignoreLogs(['VirtualizedLists'])
 
 // The theme we'll be using for our navigator
 const MyTheme = {
@@ -37,16 +43,16 @@ export default function App() {
   // Otherwise, we return our Photo Sharing App!
   if (!fontsLoaded || !assetsReady) {
     return <AppLoading
-              startAsync={_loadFonts}
-              onFinish={() => setAssetsReady(true)}
-              onError={console.warn}
-            />
+      startAsync={_loadFonts}
+      onFinish={() => setAssetsReady(true)}
+      onError={console.warn}
+    />
   }
   return (
     <NavigationContainer theme={MyTheme}>
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Let's do this 🔥🚀</Text>
-      </View>
+      <ThemeProvider theme={theme} >
+        <Navigator />
+      </ThemeProvider>
     </NavigationContainer>
   );
 }
